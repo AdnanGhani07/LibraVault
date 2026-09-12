@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: libravault/frontend:latest
+          image: adnanghani07/libravault-frontend:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000

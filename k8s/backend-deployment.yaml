@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: libravault/backend:latest
+          image: adnanghani07/libravault-backend:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
