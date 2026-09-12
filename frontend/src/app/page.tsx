@@ -349,7 +349,7 @@ export default function HomePage() {
         </div>
         <div className="flex items-center gap-4">
           <a
-            href="http://localhost:8080/swagger-ui.html"
+            href={`${process.env.NEXT_PUBLIC_API_URL?.replace(/\/api$/, '') || 'http://localhost:8080'}/swagger-ui.html`}
             target="_blank"
             rel="noreferrer"
             className="hover:text-indigo-400 transition-colors"
@@ -357,7 +357,7 @@ export default function HomePage() {
             Swagger API Docs ↗
           </a>
           <a
-            href="http://localhost:8080/actuator/health"
+            href={`${process.env.NEXT_PUBLIC_API_URL?.replace(/\/api$/, '') || 'http://localhost:8080'}/actuator/health`}
             target="_blank"
             rel="noreferrer"
             className="hover:text-emerald-400 transition-colors"
