@@ -1,21 +1,20 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useAuth } from '@/context/AuthContext';
-import { RoleBadge } from './Badge';
+import { useAuth } from "@/context/AuthContext";
+import { cn } from "@/lib/utils";
 import {
-  BookOpen,
-  LayoutDashboard,
-  ShieldCheck,
   Bookmark,
-  LogOut,
+  BookOpen,
+  Layers,
+  LayoutDashboard,
   LogIn,
+  LogOut,
+  ShieldCheck,
   UserPlus,
-  Layers
-} from 'lucide-react';
-import { cn } from '@/lib/utils';
+} from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { RoleBadge } from "./Badge";
 
 export function Navbar() {
   const { user, role, isAuthenticated, logout } = useAuth();
@@ -42,26 +41,27 @@ export function Navbar() {
         {/* Navigation Links */}
         <nav className="hidden md:flex items-center gap-1.5">
           <Link
-            href="/"
+            href="/catalog"
             className={cn(
-              'px-3.5 py-2 rounded-lg text-sm font-medium transition-all',
-              pathname === '/'
-                ? 'bg-indigo-600/20 text-indigo-300 border border-indigo-500/30'
-                : 'text-slate-300 hover:text-white hover:bg-white/5'
+              "px-3.5 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-1.5",
+              pathname === "/catalog"
+                ? "bg-indigo-600/20 text-indigo-300 border border-indigo-500/30"
+                : "text-slate-300 hover:text-white hover:bg-white/5",
             )}
           >
+            <BookOpen className="w-4 h-4 text-indigo-400" />
             Catalog Explorer
           </Link>
 
-          {role === 'ROLE_ADMIN' && (
+          {role === "ROLE_ADMIN" && (
             <>
               <Link
                 href="/admin/inventory"
                 className={cn(
-                  'flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm font-medium transition-all',
-                  pathname.startsWith('/admin/inventory')
-                    ? 'bg-purple-600/20 text-purple-300 border border-purple-500/30'
-                    : 'text-slate-300 hover:text-white hover:bg-white/5'
+                  "flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm font-medium transition-all",
+                  pathname.startsWith("/admin/inventory")
+                    ? "bg-purple-600/20 text-purple-300 border border-purple-500/30"
+                    : "text-slate-300 hover:text-white hover:bg-white/5",
                 )}
               >
                 <LayoutDashboard className="w-4 h-4 text-purple-400" />
@@ -70,10 +70,10 @@ export function Navbar() {
               <Link
                 href="/admin/audit"
                 className={cn(
-                  'flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm font-medium transition-all',
-                  pathname.startsWith('/admin/audit')
-                    ? 'bg-purple-600/20 text-purple-300 border border-purple-500/30'
-                    : 'text-slate-300 hover:text-white hover:bg-white/5'
+                  "flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm font-medium transition-all",
+                  pathname.startsWith("/admin/audit")
+                    ? "bg-purple-600/20 text-purple-300 border border-purple-500/30"
+                    : "text-slate-300 hover:text-white hover:bg-white/5",
                 )}
               >
                 <ShieldCheck className="w-4 h-4 text-purple-400" />
@@ -82,15 +82,15 @@ export function Navbar() {
             </>
           )}
 
-          {role === 'ROLE_STAFF' && (
+          {role === "ROLE_STAFF" && (
             <>
               <Link
                 href="/staff/checkout"
                 className={cn(
-                  'flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm font-medium transition-all',
-                  pathname.startsWith('/staff/checkout')
-                    ? 'bg-indigo-600/20 text-indigo-300 border border-indigo-500/30'
-                    : 'text-slate-300 hover:text-white hover:bg-white/5'
+                  "flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm font-medium transition-all",
+                  pathname.startsWith("/staff/checkout")
+                    ? "bg-indigo-600/20 text-indigo-300 border border-indigo-500/30"
+                    : "text-slate-300 hover:text-white hover:bg-white/5",
                 )}
               >
                 <Layers className="w-4 h-4 text-indigo-400" />
@@ -99,10 +99,10 @@ export function Navbar() {
               <Link
                 href="/staff/returns"
                 className={cn(
-                  'flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm font-medium transition-all',
-                  pathname.startsWith('/staff/returns')
-                    ? 'bg-indigo-600/20 text-indigo-300 border border-indigo-500/30'
-                    : 'text-slate-300 hover:text-white hover:bg-white/5'
+                  "flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm font-medium transition-all",
+                  pathname.startsWith("/staff/returns")
+                    ? "bg-indigo-600/20 text-indigo-300 border border-indigo-500/30"
+                    : "text-slate-300 hover:text-white hover:bg-white/5",
                 )}
               >
                 <Bookmark className="w-4 h-4 text-indigo-400" />
@@ -111,10 +111,10 @@ export function Navbar() {
               <Link
                 href="/staff/overdue"
                 className={cn(
-                  'flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm font-medium transition-all',
-                  pathname.startsWith('/staff/overdue')
-                    ? 'bg-rose-600/20 text-rose-300 border border-rose-500/30'
-                    : 'text-slate-300 hover:text-white hover:bg-white/5'
+                  "flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm font-medium transition-all",
+                  pathname.startsWith("/staff/overdue")
+                    ? "bg-rose-600/20 text-rose-300 border border-rose-500/30"
+                    : "text-slate-300 hover:text-white hover:bg-white/5",
                 )}
               >
                 Overdue Monitor
@@ -122,14 +122,14 @@ export function Navbar() {
             </>
           )}
 
-          {role === 'ROLE_MEMBER' && (
+          {role === "ROLE_MEMBER" && (
             <Link
               href="/member/bookshelf"
               className={cn(
-                'flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm font-medium transition-all',
-                pathname.startsWith('/member')
-                  ? 'bg-emerald-600/20 text-emerald-300 border border-emerald-500/30'
-                  : 'text-slate-300 hover:text-white hover:bg-white/5'
+                "flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm font-medium transition-all",
+                pathname.startsWith("/member")
+                  ? "bg-emerald-600/20 text-emerald-300 border border-emerald-500/30"
+                  : "text-slate-300 hover:text-white hover:bg-white/5",
               )}
             >
               <Bookmark className="w-4 h-4 text-emerald-400" />
@@ -143,7 +143,9 @@ export function Navbar() {
           {isAuthenticated && user ? (
             <div className="flex items-center gap-3">
               <div className="hidden sm:flex flex-col items-end">
-                <span className="text-xs font-semibold text-white">{user.fullName}</span>
+                <span className="text-xs font-semibold text-white">
+                  {user.fullName}
+                </span>
                 <span className="text-[11px] text-slate-400">{user.email}</span>
               </div>
               <RoleBadge role={user.role} />
