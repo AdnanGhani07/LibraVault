@@ -52,8 +52,8 @@ public class BorrowController {
     }
 
     @GetMapping("/my-history")
-    @PreAuthorize("hasRole('MEMBER')")
-    @Operation(summary = "Get my borrow history (Member)", description = "Retrieve current and past borrow records for the logged-in member")
+    @PreAuthorize("hasAnyRole('MEMBER', 'STAFF', 'ADMIN')")
+    @Operation(summary = "Get my borrow history (Member/Staff/Admin)", description = "Retrieve current and past borrow records for the logged-in user")
     public ResponseEntity<PageResponse<BorrowRecordResponse>> getMyHistory(
             @AuthenticationPrincipal UserPrincipal memberPrincipal,
             @RequestParam(defaultValue = "0") int page,
