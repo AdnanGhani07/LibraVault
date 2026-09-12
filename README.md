@@ -152,16 +152,3 @@ kubectl apply -f k8s/backend-deployment.yaml
 kubectl apply -f k8s/frontend-deployment.yaml
 kubectl apply -f k8s/ingress.yaml
 ```
-
----
-
-## Weekly Engineering Documentation & Learning Manuals
-
-| Phase | Topics & Focus | Documentation | Learning Manual |
-| :--- | :--- | :--- | :--- |
-| **Week 1** | PostgreSQL 16, Flyway V1/V2, JPA Entities, Repositories | [docs/week-01/README.md](docs/week-01/README.md) | [docs/week-01/LEARNING_MANUAL.md](docs/week-01/LEARNING_MANUAL.md) |
-| **Week 2** | Spring Security 6, JWT, RBAC `@PreAuthorize`, RFC Error Envelopes | [docs/week-02/README.md](docs/week-02/README.md) | [docs/week-02/LEARNING_MANUAL.md](docs/week-02/LEARNING_MANUAL.md) |
-| **Week 3** | Pessimistic Locking, Fine Engine, Event-Driven Audit Trails | [docs/week-03/README.md](docs/week-03/README.md) | [docs/week-03/LEARNING_MANUAL.md](docs/week-03/LEARNING_MANUAL.md) |
-| **Week 4** | Next.js App Router, Typed API Client, Admin & Staff Portals | [docs/week-04/README.md](docs/week-04/README.md) | [docs/week-04/LEARNING_MANUAL.md](docs/week-04/LEARNING_MANUAL.md) |
-| **Week 5** | Member Bookshelf, Due-date Timers, UI Polish & Micro-interactions | [docs/week-05/README.md](docs/week-05/README.md) | [docs/week-05/LEARNING_MANUAL.md](docs/week-05/LEARNING_MANUAL.md) |
-| **Week 6** | Multi-stage Docker, K8s Manifests, CI/CD & Cloud Deployment | [docs/week-06/README.md](docs/week-06/README.md) | [docs/week-06/LEARNING_MANUAL.md](docs/week-06/LEARNING_MANUAL.md) |
