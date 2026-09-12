@@ -13,10 +13,12 @@ export interface User {
 export interface AuthResponse {
   accessToken: string;
   tokenType: string;
-  id: number;
-  email: string;
-  fullName: string;
-  role: Role;
+  expiresIn?: number;
+  user?: User;
+  id?: number;
+  email?: string;
+  fullName?: string;
+  role?: Role;
 }
 
 export interface Item {

@@ -43,11 +43,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = async (credentials: { email: string; password: string }) => {
     const res = await api.auth.login(credentials);
+    const userObj = res.user || {
+      id: res.id!,
+      email: res.email!,
+      fullName: res.fullName!,
+      role: res.role!,
+    };
+
     const loggedInUser: User = {
-      id: res.id,
-      email: res.email,
-      fullName: res.fullName,
-      role: res.role,
+      id: userObj.id,
+      email: userObj.email,
+      fullName: userObj.fullName,
+      role: userObj.role,
     };
 
     localStorage.setItem('libravault_token', res.accessToken);
@@ -57,9 +64,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setUser(loggedInUser);
 
     // Smart role-based redirect
-    if (res.role === 'ROLE_ADMIN') {
+    if (loggedInUser.role === 'ROLE_ADMIN') {
       router.push('/admin/inventory');
-    } else if (res.role === 'ROLE_STAFF') {
+    } else if (loggedInUser.role === 'ROLE_STAFF') {
       router.push('/staff/checkout');
     } else {
       router.push('/member/bookshelf');
@@ -68,11 +75,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const register = async (userData: { email: string; password: string; fullName: string }) => {
     const res = await api.auth.register(userData);
+    const userObj = res.user || {
+      id: res.id!,
+      email: res.email!,
+      fullName: res.fullName!,
+      role: res.role!,
+    };
+
     const registeredUser: User = {
-      id: res.id,
-      email: res.email,
-      fullName: res.fullName,
-      role: res.role,
+      id: userObj.id,
+      email: userObj.email,
+      fullName: userObj.fullName,
+      role: userObj.role,
     };
 
     localStorage.setItem('libravault_token', res.accessToken);
