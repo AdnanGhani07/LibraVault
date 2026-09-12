@@ -143,9 +143,12 @@ export function Navbar() {
           {isAuthenticated && user ? (
             <div className="flex items-center gap-3">
               <div className="hidden sm:flex flex-col items-end">
-                <span className="text-xs font-semibold text-white">
-                  {user.fullName}
-                </span>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-xs font-semibold text-white">{user.fullName}</span>
+                  <span className="px-1.5 py-0.2 text-[10px] font-mono bg-slate-800 text-indigo-300 rounded border border-slate-700">
+                    ID: #{user.id}
+                  </span>
+                </div>
                 <span className="text-[11px] text-slate-400">{user.email}</span>
               </div>
               <RoleBadge role={user.role} />

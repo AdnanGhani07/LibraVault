@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { ProtectedRoute } from '@/components/auth/ProtectedRoute';
+import { useAuth } from '@/context/AuthContext';
 import { api } from '@/lib/api';
 import { BorrowRecord } from '@/types';
 import { useToast } from '@/context/ToastContext';
@@ -14,7 +15,8 @@ import {
   RotateCcw,
   Loader2,
   CheckCircle2,
-  AlertCircle
+  AlertCircle,
+  User
 } from 'lucide-react';
 
 export default function MemberBookshelfPage() {
@@ -26,6 +28,7 @@ export default function MemberBookshelfPage() {
 }
 
 function MemberBookshelfContent() {
+  const { user } = useAuth();
   const { error: toastError } = useToast();
 
   const [records, setRecords] = useState<BorrowRecord[]>([]);
@@ -90,24 +93,39 @@ function MemberBookshelfContent() {
 
   return (
     <div className="space-y-8">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-5">
+      {/* Header with Digital Membership ID Card */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-5">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white flex items-center gap-2.5">
-            <Bookmark className="w-7 h-7 text-emerald-400" />
-            My Bookshelf &amp; Reading Timeline
-          </h1>
+          <div className="flex items-center gap-3">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-white flex items-center gap-2.5">
+              <Bookmark className="w-7 h-7 text-emerald-400" />
+              My Bookshelf &amp; Reading Timeline
+            </h1>
+          </div>
           <p className="text-slate-400 text-xs mt-1">
             Track your currently borrowed books, return countdown timers, and past reading history.
           </p>
         </div>
-        <button
-          onClick={fetchMyHistory}
-          className="flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold text-slate-200 bg-slate-800 hover:bg-slate-700 border border-slate-700 transition-all"
-        >
-          <RotateCcw className="w-4 h-4" />
-          Refresh Bookshelf
-        </button>
+
+        {/* Member ID Digital Card Chip */}
+        <div className="flex items-center gap-3">
+          {user && (
+            <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/25 text-emerald-300">
+              <User className="w-4 h-4" />
+              <div className="text-xs">
+                <span className="text-slate-400">Membership ID:</span>{' '}
+                <span className="font-mono font-bold text-white">#{user.id}</span>
+              </div>
+            </div>
+          )}
+          <button
+            onClick={fetchMyHistory}
+            className="flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold text-slate-200 bg-slate-800 hover:bg-slate-700 border border-slate-700 transition-all"
+          >
+            <RotateCcw className="w-4 h-4" />
+            Refresh
+          </button>
+        </div>
       </div>
 
       {/* Tab Navigation */}
