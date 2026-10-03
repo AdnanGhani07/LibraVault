@@ -14,7 +14,6 @@ import {
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Suspense } from "react";
-import { RoleBadge } from "./Badge";
 
 function NavSegmentedPill({ isAuthenticated }: { isAuthenticated: boolean }) {
   const pathname = usePathname();
@@ -153,17 +152,11 @@ export function Navbar() {
           {isAuthenticated && user ? (
             <div className="flex items-center gap-3">
               <div className="hidden sm:flex flex-col items-end">
-                <div className="flex items-center gap-1.5">
-                  <span className="text-xs font-semibold text-white">
-                    {user.fullName}
-                  </span>
-                  <span className="px-1.5 py-0.2 text-[10px] font-mono bg-slate-800 text-indigo-300 rounded border border-slate-700">
-                    ID: #{user.id}
-                  </span>
-                </div>
+                <span className="text-xs font-semibold text-white">
+                  {user.fullName}
+                </span>
                 <span className="text-[11px] text-slate-400">{user.email}</span>
               </div>
-              <RoleBadge role={user.role} />
               <button
                 onClick={logout}
                 className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-rose-300 hover:bg-rose-500/10 border border-transparent hover:border-rose-500/20 transition-all"

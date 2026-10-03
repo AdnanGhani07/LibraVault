@@ -19,7 +19,6 @@ import {
   RotateCcw,
   Sparkles,
   Trash2,
-  User,
 } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
@@ -123,19 +122,8 @@ function MemberBookshelfContent() {
           </p>
         </div>
 
-        {/* Member ID Digital Card Chip & Refresh */}
+        {/* Refresh Action */}
         <div className="flex items-center gap-3">
-          {user && (
-            <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/25 text-emerald-300">
-              <User className="w-4 h-4" />
-              <div className="text-xs">
-                <span className="text-slate-400">Researcher:</span>{" "}
-                <span className="font-mono font-bold text-white">
-                  #{user.id}
-                </span>
-              </div>
-            </div>
-          )}
           <button
             onClick={fetchVault}
             className="flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold text-slate-200 bg-slate-800 hover:bg-slate-700 border border-slate-700 transition-all"
