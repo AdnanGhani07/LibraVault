@@ -16,7 +16,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 import { RoleBadge } from "./Badge";
 
-function NavSegmentedPill() {
+function NavSegmentedPill({ isAuthenticated }: { isAuthenticated: boolean }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const tab = searchParams.get("tab")?.toUpperCase() || "";
@@ -24,13 +24,14 @@ function NavSegmentedPill() {
   const isDiscovery = pathname.startsWith("/discovery");
   const isPapersActive = isDiscovery && tab !== "BOOKS";
   const isBooksActive = isDiscovery && tab === "BOOKS";
+  const isVaultActive = pathname.startsWith("/member");
 
   return (
     <div className="flex items-center p-1 rounded-2xl bg-white/[0.05] border border-white/10 backdrop-blur-md shadow-inner">
       <Link
         href="/discovery?tab=PAPERS"
         className={cn(
-          "flex items-center gap-2 px-4 py-1.5 rounded-xl text-xs font-semibold transition-all",
+          "flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all",
           isPapersActive
             ? "bg-gradient-to-r from-indigo-600 to-indigo-500 text-white shadow-md shadow-indigo-500/25 border border-indigo-400/30"
             : "text-slate-400 hover:text-slate-200 hover:bg-white/5",
@@ -44,7 +45,7 @@ function NavSegmentedPill() {
       <Link
         href="/discovery?tab=BOOKS"
         className={cn(
-          "flex items-center gap-2 px-4 py-1.5 rounded-xl text-xs font-semibold transition-all",
+          "flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all",
           isBooksActive
             ? "bg-gradient-to-r from-purple-600 to-violet-600 text-white shadow-md shadow-purple-500/25 border border-purple-400/30"
             : "text-slate-400 hover:text-slate-200 hover:bg-white/5",
@@ -53,6 +54,21 @@ function NavSegmentedPill() {
         <BookOpen className="w-4 h-4 text-purple-300" />
         <span>Books &amp; Volumes</span>
       </Link>
+
+      {isAuthenticated && (
+        <Link
+          href="/member/bookshelf"
+          className={cn(
+            "flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all",
+            isVaultActive
+              ? "bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-md shadow-emerald-500/25 border border-emerald-400/30"
+              : "text-slate-400 hover:text-slate-200 hover:bg-white/5",
+          )}
+        >
+          <Bookmark className="w-4 h-4 text-emerald-300" />
+          <span>My Vault</span>
+        </Link>
+      )}
     </div>
   );
 }
@@ -60,11 +76,11 @@ function NavSegmentedPill() {
 function NavSegmentedPillFallback() {
   return (
     <div className="flex items-center p-1 rounded-2xl bg-white/[0.05] border border-white/10">
-      <div className="flex items-center gap-2 px-4 py-1.5 rounded-xl text-xs font-semibold text-slate-400">
+      <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold text-slate-400">
         <GraduationCap className="w-4 h-4 text-indigo-300" />
         <span>Research Papers</span>
       </div>
-      <div className="flex items-center gap-2 px-4 py-1.5 rounded-xl text-xs font-semibold text-slate-400">
+      <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold text-slate-400">
         <BookOpen className="w-4 h-4 text-purple-300" />
         <span>Books &amp; Volumes</span>
       </div>
@@ -96,26 +112,11 @@ export function Navbar() {
           </Link>
         </div>
 
-        {/* Center: Two Nav Hubs (Research Papers & Books) */}
+        {/* Center: Unified Navigation Pill */}
         <nav className="hidden md:flex items-center justify-center gap-3 flex-initial">
           <Suspense fallback={<NavSegmentedPillFallback />}>
-            <NavSegmentedPill />
+            <NavSegmentedPill isAuthenticated={isAuthenticated} />
           </Suspense>
-
-          {role === "ROLE_MEMBER" && (
-            <Link
-              href="/member/bookshelf"
-              className={cn(
-                "flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all border",
-                pathname.startsWith("/member")
-                  ? "bg-emerald-600/20 text-emerald-300 border-emerald-500/30 shadow-sm shadow-emerald-500/10"
-                  : "text-slate-300 hover:text-white hover:bg-white/5 border-transparent",
-              )}
-            >
-              <Bookmark className="w-3.5 h-3.5 text-emerald-400" />
-              <span>My Vault</span>
-            </Link>
-          )}
 
           {role === "ROLE_ADMIN" && (
             <div className="flex items-center gap-1.5 pl-2 border-l border-white/10">
