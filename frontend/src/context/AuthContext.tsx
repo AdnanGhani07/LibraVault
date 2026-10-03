@@ -66,8 +66,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     // Smart role-based redirect
     if (loggedInUser.role === 'ROLE_ADMIN') {
       router.push('/admin/inventory');
-    } else if (loggedInUser.role === 'ROLE_STAFF') {
-      router.push('/staff/checkout');
     } else {
       router.push('/member/bookshelf');
     }

@@ -86,6 +86,8 @@ public class SecurityConfig {
                     "/swagger-ui.html"
                 ).permitAll()
                 .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/items/**").permitAll()
+                .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/discovery/**").permitAll()
+                .requestMatchers(org.springframework.http.HttpMethod.POST, "/api/ai/summarize").permitAll()
                 .anyRequest().authenticated()
             )
             .authenticationProvider(authenticationProvider())

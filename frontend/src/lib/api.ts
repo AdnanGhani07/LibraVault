@@ -138,4 +138,55 @@ export const api = {
       return request<PageResponse<AuditLog>>(`/api/audit-logs${qs ? `?${qs}` : ''}`);
     },
   },
+
+  // Discovery Endpoints (arXiv & Open Library)
+  discovery: {
+    getPapers: (params?: { query?: string; category?: string; page?: number; size?: number }) => {
+      const query = new URLSearchParams();
+      if (params?.query) query.append('query', params.query);
+      if (params?.category) query.append('category', params.category);
+      if (params?.page !== undefined) query.append('page', params.page.toString());
+      if (params?.size !== undefined) query.append('size', params.size.toString());
+
+      const qs = query.toString();
+      return request<import('@/types').PaperSearchResponse>(`/api/discovery/papers${qs ? `?${qs}` : ''}`);
+    },
+    getPaperById: (arxivId: string) =>
+      request<import('@/types').ResearchPaper>(`/api/discovery/papers/${encodeURIComponent(arxivId)}`),
+    getBooks: (params?: { query?: string; page?: number; size?: number }) => {
+      const query = new URLSearchParams();
+      if (params?.query) query.append('query', params.query);
+      if (params?.page !== undefined) query.append('page', params.page.toString());
+      if (params?.size !== undefined) query.append('size', params.size.toString());
+
+      const qs = query.toString();
+      return request<import('@/types').BookSearchResponse>(`/api/discovery/books${qs ? `?${qs}` : ''}`);
+    },
+  },
+
+  // AI Assistant Endpoints
+  ai: {
+    summarize: (data: import('@/types').PaperSummaryRequest) =>
+      request<import('@/types').PaperSummary>('/api/ai/summarize', {
+        method: 'POST',
+        body: JSON.stringify(data),
+      }),
+  },
+
+  // Member Vault Endpoints
+  vault: {
+    save: (data: import('@/types').SaveResourceRequest) =>
+      request<import('@/types').SavedResource>('/api/vault/save', {
+        method: 'POST',
+        body: JSON.stringify(data),
+      }),
+    getMyResources: () =>
+      request<import('@/types').SavedResource[]>('/api/vault/my-resources'),
+    remove: (id: number) =>
+      request<void>(`/api/vault/${id}`, {
+        method: 'DELETE',
+      }),
+    check: (externalId: string) =>
+      request<{ saved: boolean }>(`/api/vault/check/${encodeURIComponent(externalId)}`),
+  },
 };

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import { useToast } from '@/context/ToastContext';
-import { LogIn, Lock, Mail, Loader2, Sparkles, Shield, Layers, User as UserIcon, Eye, EyeOff } from 'lucide-react';
+import { LogIn, Lock, Mail, Loader2, Eye, EyeOff } from 'lucide-react';
 
 export default function LoginPage() {
   const { login } = useAuth();
@@ -33,11 +33,6 @@ export default function LoginPage() {
     }
   };
 
-  const handlePreFill = (demoEmail: string) => {
-    setEmail(demoEmail);
-    setPassword('Password@123');
-  };
-
   return (
     <div className="min-h-[75vh] flex items-center justify-center p-4">
       <div className="glass-panel max-w-md w-full p-8 rounded-3xl border-white/10 shadow-2xl space-y-6">
@@ -46,37 +41,7 @@ export default function LoginPage() {
             <LogIn className="w-6 h-6 text-indigo-400" />
           </div>
           <h1 className="text-2xl font-extrabold text-white tracking-tight">Sign In to LibraVault</h1>
-          <p className="text-slate-400 text-xs">Enter your enterprise credentials to access your portal</p>
-        </div>
-
-        {/* 1-Click Persona Pre-Fill Chips */}
-        <div className="space-y-2">
-          <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider text-center">
-            Quick Demo Autofill
-          </p>
-          <div className="grid grid-cols-3 gap-2">
-            <button
-              type="button"
-              onClick={() => handlePreFill('admin@libravault.com')}
-              className="px-2.5 py-1.5 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 border border-purple-500/20 text-[11px] font-medium transition-all flex items-center justify-center gap-1"
-            >
-              <Shield className="w-3 h-3" /> Admin
-            </button>
-            <button
-              type="button"
-              onClick={() => handlePreFill('staff@libravault.com')}
-              className="px-2.5 py-1.5 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-300 border border-indigo-500/20 text-[11px] font-medium transition-all flex items-center justify-center gap-1"
-            >
-              <Layers className="w-3 h-3" /> Staff
-            </button>
-            <button
-              type="button"
-              onClick={() => handlePreFill('member@libravault.com')}
-              className="px-2.5 py-1.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/20 text-[11px] font-medium transition-all flex items-center justify-center gap-1"
-            >
-              <UserIcon className="w-3 h-3" /> Member
-            </button>
-          </div>
+          <p className="text-slate-400 text-xs">Enter your credentials to access your portal</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">

@@ -54,7 +54,7 @@ npm run dev
 - Return standardized JSON error envelopes through `GlobalExceptionHandler`.
 - Write unit/integration tests with JUnit 5, AssertJ, and MockMvc for all new endpoints.
 
-### Frontend (Next.js 15 + TypeScript + Tailwind CSS)
+### Frontend (Next.js 16 + TypeScript + Tailwind CSS)
 - Maintain strict TypeScript types (no `any` types where possible).
 - Use Tailwind CSS and the `cn(...)` utility helper for dynamic classes.
 - Ensure all protected views use the `<ProtectedRoute>` component.

@@ -96,3 +96,94 @@ export interface ApiError {
   timestamp: string;
   validationErrors?: Record<string, string>;
 }
+
+// ============================================================================
+// Discovery & AI Assistant Types
+// ============================================================================
+
+export interface ResearchPaper {
+  arxivId: string;
+  title: string;
+  summary: string;
+  authors: string[];
+  publishedDate: string;
+  updatedDate?: string;
+  primaryCategory: string;
+  categories: string[];
+  pdfUrl: string;
+  absUrl: string;
+  doi?: string;
+  journalRef?: string;
+  bibtex?: string;
+}
+
+export interface PaperSearchResponse {
+  query: string;
+  category?: string;
+  totalResults: number;
+  page: number;
+  size: number;
+  papers: ResearchPaper[];
+}
+
+export interface GlobalBook {
+  openLibraryKey: string;
+  title: string;
+  authors: string[];
+  firstPublishYear?: number;
+  isbn?: string;
+  coverUrl?: string;
+  editionCount: number;
+  hasFullText: boolean;
+  readUrl?: string;
+}
+
+export interface BookSearchResponse {
+  query: string;
+  totalResults: number;
+  page: number;
+  size: number;
+  books: GlobalBook[];
+}
+
+export interface PaperSummaryRequest {
+  arxivId?: string;
+  title: string;
+  abstractText: string;
+}
+
+export interface PaperSummary {
+  arxivId?: string;
+  title: string;
+  oneSentenceSummary: string;
+  coreProblem: string;
+  methodology: string[];
+  keyFindings: string[];
+  practicalApplications: string[];
+  provider: string;
+}
+
+export type ResourceType = 'RESEARCH_PAPER' | 'EXTERNAL_BOOK';
+
+export interface SavedResource {
+  id: number;
+  resourceType: ResourceType;
+  externalId: string;
+  title: string;
+  authors?: string;
+  coverOrPdfUrl?: string;
+  categoryOrYear?: string;
+  notes?: string;
+  createdAt: string;
+}
+
+export interface SaveResourceRequest {
+  resourceType: ResourceType;
+  externalId: string;
+  title: string;
+  authors?: string;
+  coverOrPdfUrl?: string;
+  categoryOrYear?: string;
+  notes?: string;
+}
+
