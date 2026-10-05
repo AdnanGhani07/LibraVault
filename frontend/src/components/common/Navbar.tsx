@@ -14,6 +14,7 @@ import {
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Suspense } from "react";
+import { Logo } from "@/components/common/Logo";
 
 function NavSegmentedPill({ isAuthenticated }: { isAuthenticated: boolean }) {
   const pathname = usePathname();
@@ -96,19 +97,7 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Left: Brand Logo */}
         <div className="flex-1 flex items-center justify-start">
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-violet-500 flex items-center justify-center shadow-lg shadow-indigo-500/25 group-hover:scale-105 transition-all">
-              <BookOpen className="w-5 h-5 text-white" />
-            </div>
-            <div>
-              <span className="text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-100 to-indigo-300 bg-clip-text text-transparent">
-                Libra<span className="text-indigo-400">Vault</span>
-              </span>
-              <span className="hidden sm:inline-block ml-2 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 rounded-full">
-                Research Hub
-              </span>
-            </div>
-          </Link>
+          <Logo size="md" />
         </div>
 
         {/* Center: Unified Navigation Pill */}

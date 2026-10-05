@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="lv-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="50%" stop-color="#020617" />
+      <stop offset="100%" stop-color="#090D16" />
+    </linearGradient>
+
+    <!-- Primary Brand Gradient (Electric Indigo to Violet to Sky) -->
+    <linearGradient id="lv-primary" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366F1" />
+      <stop offset="50%" stop-color="#8B5CF6" />
+      <stop offset="100%" stop-color="#06B6D4" />
+    </linearGradient>
+
+    <!-- Wing Left Gradient -->
+    <linearGradient id="lv-wing-l" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366F1" />
+      <stop offset="50%" stop-color="#4F46E5" />
+      <stop offset="100%" stop-color="#312E81" />
+    </linearGradient>
+
+    <!-- Wing Right Gradient -->
+    <linearGradient id="lv-wing-r" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A855F7" />
+      <stop offset="50%" stop-color="#8B5CF6" />
+      <stop offset="100%" stop-color="#4C1D95" />
+    </linearGradient>
+
+    <!-- Outer Rim Stroke Gradient -->
+    <linearGradient id="lv-stroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#818CF8" stop-opacity="0.6" />
+      <stop offset="50%" stop-color="#A78BFA" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0.5" />
+    </linearGradient>
+
+    <!-- Core Star Radial Glow -->
+    <radialGradient id="lv-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.8" />
+      <stop offset="40%" stop-color="#6366F1" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Ambient Glow -->
+  <circle cx="32" cy="30" r="24" fill="url(#lv-glow)" />
+
+  <!-- Squircle Base Frame -->
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#lv-bg)" stroke="url(#lv-stroke)" stroke-width="1.5" />
+
+  <!-- Libra Vault Emblem -->
+  <g transform="translate(0, 1)">
+    <!-- Left Manuscript Leaf -->
+    <path
+      d="M32 20C24 20 16 25 14 36C19 33 26 33 32 37V20Z"
+      fill="url(#lv-wing-l)"
+      fill-opacity="0.9"
+    />
+    <path
+      d="M32 20C24 20 16 25 14 36C19 33 26 33 32 37"
+      stroke="#818CF8"
+      stroke-width="1.2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <!-- Right Manuscript Leaf -->
+    <path
+      d="M32 20C40 20 48 25 50 36C45 33 38 33 32 37V20Z"
+      fill="url(#lv-wing-r)"
+      fill-opacity="0.9"
+    />
+    <path
+      d="M32 20C40 20 48 25 50 36C45 33 38 33 32 37"
+      stroke="#C084FC"
+      stroke-width="1.2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <!-- Lower Vault Foundation Keystones ('V' Monogram Base) -->
+    <path
+      d="M20 42L32 49L44 42L32 45L20 42Z"
+      fill="#4338CA"
+      stroke="#6366F1"
+      stroke-width="1"
+      stroke-linejoin="round"
+    />
+
+    <!-- Scales of Libra Horizon Beam -->
+    <line x1="17" y1="21" x2="47" y2="21" stroke="#38BDF8" stroke-width="1.5" stroke-linecap="round" opacity="0.8" />
+    <circle cx="17" cy="21" r="2" fill="#38BDF8" />
+    <circle cx="47" cy="21" r="2" fill="#A855F7" />
+
+    <!-- Central Diamond / AI Research Spark -->
+    <path
+      d="M32 9L36 17L32 25L28 17Z"
+      fill="url(#lv-primary)"
+    />
+    <path
+      d="M32 11L35 17L32 23L29 17Z"
+      fill="#FFFFFF"
+      fill-opacity="0.9"
+    />
+    <circle cx="32" cy="17" r="1.5" fill="#38BDF8" />
+  </g>
+</svg>

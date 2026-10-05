@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import { useToast } from '@/context/ToastContext';
 import { LogIn, Lock, Mail, Loader2, Eye, EyeOff } from 'lucide-react';
+import { LogoMark } from '@/components/common/Logo';
 
 export default function LoginPage() {
   const { login } = useAuth();
@@ -37,9 +38,7 @@ export default function LoginPage() {
     <div className="min-h-[75vh] flex items-center justify-center p-4">
       <div className="glass-panel max-w-md w-full p-8 rounded-3xl border-white/10 shadow-2xl space-y-6">
         <div className="text-center space-y-2">
-          <div className="w-12 h-12 rounded-2xl bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center mx-auto mb-3">
-            <LogIn className="w-6 h-6 text-indigo-400" />
-          </div>
+          <LogoMark size="lg" className="mx-auto mb-3" />
           <h1 className="text-2xl font-extrabold text-white tracking-tight">Sign In to LibraVault</h1>
           <p className="text-slate-400 text-xs">Enter your credentials to access your portal</p>
         </div>

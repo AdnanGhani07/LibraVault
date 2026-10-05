@@ -6,8 +6,17 @@ import { ToastProvider } from '@/context/ToastContext';
 import { Navbar } from '@/components/common/Navbar';
 
 export const metadata: Metadata = {
-  title: 'LibraVault — Enterprise Library & Inventory Management',
-  description: 'Production-Grade Library & Inventory System powered by Spring Boot 3, Stateless JWT RBAC, PostgreSQL, and Next.js',
+  title: 'LibraVault — Academic Research & Knowledge Intelligence',
+  description: 'Production-grade academic research intelligence platform with preprint discovery, AI-distilled synthesis, and private research vault.',
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    apple: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+  },
 };
 
 export default function RootLayout({
