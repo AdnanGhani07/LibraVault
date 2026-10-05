@@ -3,6 +3,14 @@ spring:
     name: libravault-backend
   profiles:
     default: dev
+  datasource:
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      idle-timeout: 300000 # 5 minutes
+      max-lifetime: 600000 # 10 minutes (gracefully rotates before cloud DB terminates idle connections)
+      connection-timeout: 20000 # 20 seconds
+      keepalive-time: 60000 # 1 minute heartbeat to prevent cloud firewall/NAT socket drops
   jpa:
     open-in-view: false
     hibernate:
@@ -17,7 +25,7 @@ spring:
     locations: classpath:db/migration
 
 server:
-  port: 8080
+  port: ${PORT:8080}
 
 management:
   endpoints:
